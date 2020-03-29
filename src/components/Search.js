@@ -29,8 +29,9 @@ import { getBookShelve } from '../common';
     }
 
     addBookShelve = (books) => {
+
         return books.map(b => {
-            b.shelve = getBookShelve(this.props.shelveBooks, b.id);
+            b.shelf = getBookShelve(this.props.shelveBooks, b.id);
             return b;
         })
     }

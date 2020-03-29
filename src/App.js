@@ -9,14 +9,27 @@ import { getBooks, addOrUpdateBook } from './common'
 
 class BooksApp extends React.Component {
   state = {
-    books: getBooks()
+    books: []
+  }
+
+  componentDidMount(){
+    this.getAllBooks();
+  }
+
+  getAllBooks = () =>{
+    BooksAPI.getAll().then(books => {
+      this.setState({books: books});
+    })
   }
 
   updateShelve = (shelve, book) =>{
-    book.shelve = shelve;
+    book.shelf = shelve;
     addOrUpdateBook(book);
-
-    this.setState({books: getBooks()})
+    BooksAPI.update(book, shelve)
+      .then(r => {
+        this.getAllBooks();
+      })
+      .catch(e => console.log(e));
   }
 
   render() {

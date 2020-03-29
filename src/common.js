@@ -19,5 +19,5 @@ export const getBooks = () => {
 
 export const getBookShelve = (books, bookId) => {
     const book = books.find(b => b.id === bookId);
-    return book ? book.shelve : null;
+    return book ? book.shelf : null;
 }

@@ -8,7 +8,7 @@ import { withRouter } from 'react-router-dom';
     
     render(){
         const { books } = this.props;
-
+        console.log(books)
         return (
         <div className="list-books">
             <div className="list-books-title">
@@ -22,7 +22,7 @@ import { withRouter } from 'react-router-dom';
                     <ol className="books-grid">
                         {
                             books
-                                .filter(book => book.shelve === isReading)
+                                .filter(book => book.shelf === isReading)
                                 .map(b => (
                                     <li key={b.id}>
                                         <Book book={b} onShelveChange={this.props.onShelveChange}/>
@@ -39,7 +39,7 @@ import { withRouter } from 'react-router-dom';
                     <ol className="books-grid">
                     {
                             books
-                                .filter(book => book.shelve === wantToRead)
+                                .filter(book => book.shelf === wantToRead)
                                 .map(b => (
                                     <li key={b.id}>
                                         <Book book={b} onShelveChange={this.props.onShelveChange}/>
@@ -55,7 +55,7 @@ import { withRouter } from 'react-router-dom';
                     <ol className="books-grid">
                     {
                             books
-                                .filter(book => book.shelve === read)
+                                .filter(book => book.shelf === read)
                                 .map(b =>(
                                     <li key={b.id}>
                                         <Book book={b} onShelveChange={this.props.onShelveChange}/>
